@@ -34,7 +34,7 @@ client.on('ready', () => {
         current++;
         }else{
             current = 0;
-            client.user.setActivity(`Community Member | ${client.guilds.cache.get('436048224617365524').members.cache.size}명`, { type: "PLAYING"})
+            client.user.setActivity(`Community Member | ${client.guilds.cache.get('서버 ID').members.cache.size}명`, { type: "PLAYING"})
         }
     }, 5*1500)
 });
@@ -42,8 +42,8 @@ client.on('ready', () => {
 client.on('ready', () => {
 
 setInterval(() => {
-    const guild = client.guilds.cache.get("436048224617365524");
-    const boost = guild.channels.cache.get("885830975890788412");
+    const guild = client.guilds.cache.get("서버 ID");
+    const boost = guild.channels.cache.get("채널 ID");
     boost.setName(`🎉 | ${guild.premiumSubscriptionCount || '0'}부스트 - ${guild.premiumTier ? `${guild.premiumTier}` : 'None'}레벨`)
     },5000)
 });
