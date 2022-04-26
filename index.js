@@ -6,8 +6,6 @@ const { join } = require('path');
 const config = require('./config.json');
 client.config = config;
 const db = require('quick.db');
-const message = [' ']
-let current = 1;
 
 client.commands = new Discord.Collection();
 const commandFolders = readdirSync('./commands');
@@ -27,17 +25,8 @@ client.on("error", console.error);
 
 client.on('ready', () => {
     console.log('I am ready');
-
-    setInterval(() => {
-        if(message[current]){
-            client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
-        current++;
-        }else{
-            current = 0;
-            client.user.setActivity(`Community Member | ${client.guilds.cache.get('서버 ID').members.cache.size}명`, { type: "PLAYING"})
-        }
-    }, 5*1500)
-});
+client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
+})
 
 client.on('ready', () => {
 
