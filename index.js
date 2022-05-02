@@ -28,15 +28,6 @@ client.on('ready', () => {
 client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
 })
 
-client.on('ready', () => {
-
-setInterval(() => {
-    const guild = client.guilds.cache.get("서버 ID");
-    const boost = guild.channels.cache.get("채널 ID");
-    boost.setName(`🎉 | ${guild.premiumSubscriptionCount || '0'}부스트 - ${guild.premiumTier ? `${guild.premiumTier}` : 'None'}레벨`)
-    },5000)
-});
-
 client.on("message", async message => {
 
     if(message.author.bot) return;
