@@ -1,11 +1,18 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client()
 const { token, default_prefix } = require('./config.json');
-const { readdirSync } = require('fs');
-const { join } = require('path');
+const { readdirSync, read } = require('fs');
 const config = require('./config.json');
 client.config = config;
+const { send } = require('process');
 const db = require('quick.db');
+
+client.event = new Discord.Collection();
+const loadEvents = require("./functions/events.js");
+
+const load = async () => {
+    await loadEvents.run(client);
+}
 
 client.commands = new Discord.Collection();
 const commandFolders = readdirSync('./commands');
@@ -24,9 +31,10 @@ for (const folder of commandFolders) {
 client.on("error", console.error);
 
 client.on('ready', () => {
-    console.log('I am ready');
-client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
+    console.log('I am ready');            
+  client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
 })
+
 
 client.on("message", async message => {
 
@@ -58,4 +66,5 @@ const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})
     }
 })
 
+load();
 client.login(token)
