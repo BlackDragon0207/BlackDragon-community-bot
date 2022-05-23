@@ -12,5 +12,5 @@ module.exports.run = (client) => {
         delete require.cache[require.resolve(`${eventDir}/${eventFile}`)];
     }
     client.events = eventFiles.length;
-    console.log(`events 커맨드 작동`);
+    console.log(`events : log commands `);
 }
