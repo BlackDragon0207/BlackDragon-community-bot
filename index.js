@@ -41,7 +41,7 @@ client.on('ready', () => {
         current++;
         }else{
             current = 0;
-            client.user.setActivity(`흑룡 커뮤니티`, { type: "PLAYING"})
+            client.user.setActivity(`Community Member | ${client.guilds.cache.get('436048224617365524').members.cache.size}명`, { type: "PLAYING"})
         }
     }, 5*1500)
   });
