@@ -6,6 +6,8 @@ const config = require('./config.json');
 client.config = config;
 const { send } = require('process');
 const db = require('quick.db');
+const message = [' ']
+let current = 1;
 
 client.event = new Discord.Collection();
 const loadEvents = require("./functions/events.js");
@@ -29,6 +31,20 @@ for (const folder of commandFolders) {
     }
 }
 client.on("error", console.error);
+
+client.on('ready', () => {
+    console.log('I am ready');
+  
+    setInterval(() => {
+        if(message[current]){
+            client.user.setActivity(`BlackDragon Community`, { type: "COMPETING"})
+        current++;
+        }else{
+            current = 0;
+            client.user.setActivity(`흑룡 커뮤니티`, { type: "PLAYING"})
+        }
+    }, 5*1500)
+  });
 
 const ms = require("ms")
 const timeSpan = ms("1m")
@@ -72,7 +88,6 @@ const timeSpan = ms("1m")
           }
         }
     )
-
 
 client.on("message", async message => {
 
